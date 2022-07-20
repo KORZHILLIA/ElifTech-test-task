@@ -1,0 +1,57 @@
+.cartContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.form,
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  margin-right: 30px;
+}
+
+.label {
+  margin-bottom: 15px;
+}
+
+.input {
+  padding: 7px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-top: 10px;
+  outline: none;
+  resize: none;
+}
+
+.goods {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.good {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  text-align: center;
+}
+
+.goodInput {
+  height: 30px;
+}
+
+.total {
+  text-align: center;
+  font-size: 28px;
+}
+
+.cartBtn {
+  padding: 5px 10px;
+}

@@ -18,25 +18,9 @@ const fetchAllShops = async (p = 1) => {
   return data;
 };
 
-const deleteContactFromApi = async id => {
-  const { data } = await instance.delete(`/contacts/${id}`);
+const addOrderToApi = async order => {
+  const { data } = await instance.post('/orders', order);
   return data;
 };
 
-const addContactToApi = async contact => {
-  const { data } = await instance.post('/contacts', contact);
-  return data;
-};
-
-const editContactInApi = async contactToUpdate => {
-  const { id } = contactToUpdate;
-  await instance.put(`/contacts/${id}`, contactToUpdate);
-  return fetchAllShops();
-};
-
-export {
-  fetchAllShops,
-  deleteContactFromApi,
-  addContactToApi,
-  editContactInApi,
-};
+export { fetchAllShops, addOrderToApi };

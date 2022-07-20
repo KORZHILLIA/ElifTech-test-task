@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { fetchAllShops } from 'shared/services/api/shops-api';
 import ShopsList from 'components/ShopsList';
 import ShopGoods from 'components/ShopGoods';
-
+import styles from './mainPage.module.css';
 const MainPage = () => {
   const [state, setState] = useState({
     shops: [],
@@ -10,6 +10,8 @@ const MainPage = () => {
     loading: false,
     error: null,
   });
+
+  const { shops, currentShopId } = state;
 
   useEffect(() => {
     const getAllShops = async () => {
@@ -25,23 +27,25 @@ const MainPage = () => {
         }));
       }
     };
+
     getAllShops();
   }, []);
 
-  const chooseExactShop = id => {
-    setState(prevstate => ({ ...prevstate, currentShopId: id }));
-  };
+  const chooseExactShop = useCallback(
+    id => {
+      setState(prevstate => ({ ...prevstate, currentShopId: id }));
+    },
+    [setState]
+  );
 
-  const { shops, currentShopId } = state;
   const currentShop = shops.find(shop => shop.id === currentShopId);
-  console.log(currentShop);
 
   return (
-    <div className="container">
-      <div className={StyleSheet.rightSide}>
+    <div className={styles.mainPageContainer}>
+      <div className={styles.leftSide}>
         <ShopsList shops={shops} onClick={chooseExactShop} />
       </div>
-      <div className={StyleSheet.leftSide}>
+      <div className={styles.rightSide}>
         {currentShop && <ShopGoods shop={currentShop} />}
       </div>
     </div>

@@ -1,0 +1,19 @@
+.shopsList {
+  width: 100%;
+  text-align: center;
+}
+
+.shop:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.shopBtn {
+  width: 90%;
+  padding: 20px 10px;
+  font-size: 24px;
+}
+
+.chooseBtn {
+  padding: 5px;
+  margin-bottom: 15px;
+}

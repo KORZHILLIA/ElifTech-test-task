@@ -1,12 +1,48 @@
+import { useState, memo } from 'react';
 import { PropTypes } from 'prop-types';
+import styles from './shopsList.module.css';
 
 const ShopList = ({ shops, onClick }) => {
+  const localStorageContent = localStorage.getItem('currentId');
+  const currentId = localStorageContent === 'null' ? null : localStorageContent;
+  const [state, setState] = useState(currentId);
+
+  const chooseActiveShop = id => {
+    setState(id);
+    onClick(id);
+    localStorage.setItem('currentId', id);
+  };
+
+  const makeAllShopsActive = () => {
+    setState(null);
+    localStorage.setItem('currentId', null);
+  };
+
   const elements = shops.map(({ id, shopName }) => (
-    <li key={id} onClick={() => onClick(id)}>
-      {shopName}
+    <li className={styles.shop} key={id}>
+      <button
+        className={`btn ${styles.shopBtn}`}
+        onClick={() => chooseActiveShop(id)}
+        disabled={state === null ? false : state !== id}
+      >
+        {shopName}
+      </button>
     </li>
   ));
-  return <ul>{elements}</ul>;
+  return (
+    <>
+      {state && (
+        <button
+          className={`btn ${styles.chooseBtn}`}
+          type="button"
+          onClick={makeAllShopsActive}
+        >
+          Choose another shop
+        </button>
+      )}
+      <ul className={styles.shopsList}>{elements}</ul>
+    </>
+  );
 };
 
 ShopList.defaultProps = {
@@ -24,4 +60,4 @@ ShopList.propTypes = {
   onClick: PropTypes.func,
 };
 
-export default ShopList;
+export default memo(ShopList);

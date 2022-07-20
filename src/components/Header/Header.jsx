@@ -1,15 +1,24 @@
 import { NavLink } from 'react-router-dom';
+import styles from './header.module.css';
 
 const Header = () => {
+  const chooseClassName = ({ isActive }) => {
+    return isActive ? styles.activeNavLink : styles.navLink;
+  };
+
   return (
-    <header>
+    <header className={styles.header}>
       <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Shop</NavLink>
+        <ul className={styles.navList}>
+          <li className={styles.navLink}>
+            <NavLink className={chooseClassName} to="/">
+              Shop
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/cart">Shopping Cart</NavLink>
+          <li className={styles.navLink}>
+            <NavLink className={chooseClassName} to="/cart">
+              Shopping Cart
+            </NavLink>
           </li>
         </ul>
       </nav>

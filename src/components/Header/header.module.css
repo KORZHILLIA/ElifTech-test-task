@@ -1,0 +1,23 @@
+.header {
+  margin-bottom: 20px;
+  padding: 10px;
+  box-shadow: 0 1px 2px 2px rgba(207, 203, 203, 0.7);
+}
+
+.navList {
+  display: flex;
+}
+
+.navLink:not(:last-child) {
+  margin-right: 20px;
+}
+
+.navLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.activeNavLink {
+  composes: navLink;
+  font-weight: 700;
+}

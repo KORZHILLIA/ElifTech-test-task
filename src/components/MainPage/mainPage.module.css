@@ -1,0 +1,19 @@
+.mainPageContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftSide,
+.rightSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 45%;
+  padding: 15px;
+  border: 2px solid #ccc;
+}
+
+.rightSide {
+  width: 50%;
+}

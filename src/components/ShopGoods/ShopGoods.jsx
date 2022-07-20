@@ -1,6 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux/es/exports';
 import { addGood } from 'redux/goods/goods-actions';
+import styles from './shopGoods.module.css';
 
 const ShopGoods = ({ shop }) => {
   const { goods } = shop;
@@ -11,15 +12,17 @@ const ShopGoods = ({ shop }) => {
   const elements = goods.map(good => {
     const { id, nameOfGood, price } = good;
     return (
-      <li key={id}>
-        <p>Name:{nameOfGood}</p>
-        <p>Price:{price}</p>
+      <li className={styles.good} key={id}>
+        <p>Name: {nameOfGood}</p>
+        <p>Price: {price}</p>
         <button
+          className="btn"
           type="button"
           onClick={() =>
             putGoodInGlobalStore({
               ...good,
               totalPrice: price,
+              quantity: 1,
               shop: shop.shopName,
             })
           }
@@ -30,7 +33,7 @@ const ShopGoods = ({ shop }) => {
     );
   });
 
-  return <ul>{elements}</ul>;
+  return <ul className={styles.goodsList}>{elements}</ul>;
 };
 
 ShopGoods.defaultProps = {
