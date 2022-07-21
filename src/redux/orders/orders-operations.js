@@ -1,12 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+import { toastConfig } from 'shared/services/api/utils/toastConfig';
 import { addOrderToApi } from '../../shared/services/api/shops-api';
-
-const toastConfig = {
-  position: toast.POSITION.TOP_CENTER,
-  autoClose: 1500,
-  delay: 500,
-};
 
 export const addOrder = createAsyncThunk(
   'orders/add',

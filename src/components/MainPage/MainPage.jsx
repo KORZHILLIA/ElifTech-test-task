@@ -5,9 +5,11 @@ import ShopGoods from 'components/ShopGoods';
 import styles from './mainPage.module.css';
 
 const MainPage = () => {
+  const localStorageContent = localStorage.getItem('currentId');
+  const currentId = localStorageContent === 'null' ? null : localStorageContent;
   const [state, setState] = useState({
     shops: [],
-    currentShopId: 0,
+    currentShopId: currentId,
     loading: false,
     error: null,
   });
@@ -44,7 +46,11 @@ const MainPage = () => {
   return (
     <div className={styles.mainPageContainer}>
       <div className={styles.leftSide}>
-        <ShopsList shops={shops} onClick={chooseExactShop} />
+        <ShopsList
+          currentId={currentShopId}
+          shops={shops}
+          onClick={chooseExactShop}
+        />
       </div>
       <div className={styles.rightSide}>
         {!currentShop && <p>To see goods, choose the shop first</p>}

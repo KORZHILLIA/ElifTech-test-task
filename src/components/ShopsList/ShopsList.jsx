@@ -2,9 +2,7 @@ import { useState, memo } from 'react';
 import { PropTypes } from 'prop-types';
 import styles from './shopsList.module.css';
 
-const ShopList = ({ shops, onClick }) => {
-  const localStorageContent = localStorage.getItem('currentId');
-  const currentId = localStorageContent === 'null' ? null : localStorageContent;
+const ShopList = ({ currentId, shops, onClick }) => {
   const [state, setState] = useState(currentId);
 
   const chooseActiveShop = id => {
