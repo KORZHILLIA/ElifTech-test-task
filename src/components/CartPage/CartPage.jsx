@@ -36,9 +36,11 @@ const CartPage = () => {
   const elements = cartGoods.map(
     ({ id, nameOfGood, totalPrice, quantity, shop }) => (
       <li className={styles.good} key={id}>
-        <p>Shop: {shop}</p>
-        <p>Name: {nameOfGood}</p>
-        <p>Price: {totalPrice}</p>
+        <div className={styles.textContainer}>
+          <p>Shop: {shop}</p>
+          <p>Name: {nameOfGood}</p>
+          <p>Price: {totalPrice}</p>
+        </div>
         <input
           className={`${styles.input} ${styles.goodInput}`}
           type="number"
@@ -119,7 +121,13 @@ const CartPage = () => {
             Submit
           </button>
         </form>
-        <ul className={styles.goods}>{elements}</ul>
+        <ul className={styles.goods}>
+          {cartGoods.length === 0 ? (
+            <p className={styles.warn}>The cart is empty</p>
+          ) : (
+            elements
+          )}
+        </ul>
       </div>
       <p className={styles.total}>Total price: {totalPrice}</p>
     </>
