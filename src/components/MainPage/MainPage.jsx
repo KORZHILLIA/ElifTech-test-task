@@ -3,6 +3,7 @@ import { fetchAllShops } from 'shared/services/api/shops-api';
 import ShopsList from 'components/ShopsList';
 import ShopGoods from 'components/ShopGoods';
 import styles from './mainPage.module.css';
+
 const MainPage = () => {
   const [state, setState] = useState({
     shops: [],
@@ -46,6 +47,7 @@ const MainPage = () => {
         <ShopsList shops={shops} onClick={chooseExactShop} />
       </div>
       <div className={styles.rightSide}>
+        {!currentShop && <p>To see goods, choose the shop first</p>}
         {currentShop && <ShopGoods shop={currentShop} />}
       </div>
     </div>

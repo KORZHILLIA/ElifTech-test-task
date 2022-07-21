@@ -7,7 +7,9 @@ export const App = () => {
   return (
     <div className="container">
       <Header />
-      <MainRoutes />
+      <main>
+        <MainRoutes />
+      </main>
       <ToastContainer />
     </div>
   );

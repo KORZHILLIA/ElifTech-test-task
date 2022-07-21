@@ -13,11 +13,6 @@ const ShopList = ({ shops, onClick }) => {
     localStorage.setItem('currentId', id);
   };
 
-  const makeAllShopsActive = () => {
-    setState(null);
-    localStorage.setItem('currentId', null);
-  };
-
   const elements = shops.map(({ id, shopName }) => (
     <li className={styles.shop} key={id}>
       <button
@@ -35,7 +30,7 @@ const ShopList = ({ shops, onClick }) => {
         <button
           className={`btn ${styles.chooseBtn}`}
           type="button"
-          onClick={makeAllShopsActive}
+          onClick={() => chooseActiveShop(null)}
         >
           Choose another shop
         </button>

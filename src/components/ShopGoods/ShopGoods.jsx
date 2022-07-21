@@ -43,7 +43,7 @@ ShopGoods.defaultProps = {
 ShopGoods.propTypes = {
   shop: PropTypes.shape({
     id: PropTypes.string,
-    name: PropTypes.string,
+    nameOfGood: PropTypes.string,
   }),
 };
 
