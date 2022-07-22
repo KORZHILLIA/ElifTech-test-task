@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import { toastConfig } from 'shared/services/api/utils/toastConfig';
+import { toastConfig } from 'shared/utils/toastConfig';
 import { addGood, deleteGood, changePrice, clearGoods } from './goods-actions';
 
 export const goodsReducer = createReducer([], {
